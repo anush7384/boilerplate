@@ -7,12 +7,6 @@ import Login from "./Login/index";
 import Signup from "./Signup/index";
 import Home from "./../components/Home/index";
 
-// interface RouteConfigProps {
-//   path: string;
-//   component: ReactNode;
-//   privateRoute: boolean;
-// }
-
 const routesConfig = [
   {
     path: ROOT,
