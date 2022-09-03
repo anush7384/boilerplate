@@ -1,11 +1,4 @@
-export interface signUpType {
-  type: "SIGNUP";
-  payload: {
-    name: string;
-    userName: string;
-    password: string;
-  };
-}
+import { signUp } from "../actions";
 
 export interface stateType {
   signedUpUsers: {
@@ -14,3 +7,5 @@ export interface stateType {
     password: string;
   }[];
 }
+
+export type Actions = ReturnType<typeof signUp>;

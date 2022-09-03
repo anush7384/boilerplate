@@ -1,10 +1,10 @@
 import { SIGNUP } from "../actionTypes";
-import { signUpType, stateType } from "./types";
+import { Actions, stateType } from "./types";
 
 const initialState: stateType = {
   signedUpUsers: [],
 };
-export const reducer = (state = initialState, action: signUpType) => {
+export const reducer = (state = initialState, action: Actions) => {
   switch (action.type) {
     case SIGNUP:
       return {

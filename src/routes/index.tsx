@@ -5,7 +5,7 @@ import {v4 as uuid} from "uuid";
 import { ROOT, HOME, LOGIN } from "../utils/routepaths";
 import Login from "./Login/index";
 import Signup from "./Signup/index";
-import Home from "./../components/Home/index";
+import Home from "./Home/index";
 
 const routesConfig = [
   {
@@ -25,8 +25,8 @@ const routesConfig = [
   },
 ];
 
-const elem = (component: ReactNode, privateRoute: boolean) => {
-  const isUserPresent = localStorage.getItem("Login");
+const ProtectedRoute = (component: ReactNode, privateRoute: boolean) => {
+  const isUserPresent = localStorage.getItem("accessToken");
 
   const isValidRoute =
     (privateRoute && isUserPresent) || !(privateRoute || isUserPresent);
@@ -44,7 +44,7 @@ const AppRoutes = () => {
           <Route
             key={uuid()}
             path={obj.path}
-            element={elem(obj.component, obj.privateRoute)}
+            element={ProtectedRoute(obj.component, obj.privateRoute)}
           ></Route>
         );
       })}

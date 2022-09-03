@@ -4,7 +4,7 @@ import { Fragment } from "react";
 const  Login = () => {
   const navigate = useNavigate();
   const loginHandler = (): void  => {
-    localStorage.setItem("Login", "true");
+    localStorage.setItem("accessToken", "true");
     navigate('/home');
   };
 
