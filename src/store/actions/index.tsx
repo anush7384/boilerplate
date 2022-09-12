@@ -1,10 +1,11 @@
 import { SIGNUP } from "../actionTypes";
 
 interface detailsType {
-  name: String;
-  userName: String;
-  password: String;
+  name: string;
+  userName: string;
+  password: string;
 };
+
 export const signUp = (details: detailsType) => {
   return {
     type: SIGNUP,

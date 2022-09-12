@@ -1,81 +1,84 @@
 import { Dispatch } from "redux";
-import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Fragment } from "react";
+import styled from "styled-components";
 
-import "./styles.css";
 import { signUp } from "../../store/actions/index";
+import RightSignup from "./../../components/RightSignup/index";
 
+const logo:string = require('./../../utils/Images/Signup/signup_image.svg').default; 
 interface propsType {
   signUp: (obj: objectType) => void;
 }
-const Signup = (props: propsType) => {
-  const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [pass, setPass] = useState("");
+const LeftContainer = styled.div`
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(to right, #5352ed 65%, #ffffff 65%);
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+`;
 
-  window.onbeforeunload = function (e) {
-    localStorage.clear();
-  };
+export const RightContainer = styled.div`
+  height: 100%;
+  width: 40%;
+  background-color: #ffffff;
+`;
 
-  const inputNameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setName(e.target.value);
-  };
+const HeadDiv = styled.div`
+  width: 20%;
+  height: 5%;
+  margin-top: 7%;
+  margin-left: 13%;
+  word-wrap: breakword;
+  font-size: xx-large;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+`;
+const ImageDiv = styled.div`
+  width: 80%;
+  margin-left: 14%;
+  height:80%;
+`;
 
-  const userNameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setUserName(e.target.value);
-  };
+export const Container = styled.div`
+  height: 100%;
+  width: 99%;
+  display: flex;
+  flex-direction: row;
+`;
 
-  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setPass(e.target.value);
-  };
+const Image = styled.img`
+width:100%;
+height:100%;
+`
 
-  const signupHandler = (): void => {
-    let obj = {
-      name: name,
-      userName: userName,
-      password: pass,
-    };
-    props.signUp(obj);
-    setName("");
-    setUserName("");
-    setPass("");
-    navigate("/login");
-  };
 
+export const LeftPage = () =>{
   return (
-    <div>
-      <h1>SIGNUP PAGE</h1>
-      <div id="signup_form">
-        <input
-          className="input"
-          id="name_input"
-          type="text"
-          placeholder="Enter Your Full Name"
-          value={name}
-          onChange={inputNameHandler}
-        ></input>
-        <input
-          className="input"
-          id="username_input"
-          placeholder="Enter Your User Name"
-          value={userName}
-          onChange={userNameHandler}
-        />
-        <input
-          className="input"
-          id="pass_input"
-          placeholder="Enter Your Password"
-          value={pass}
-          onChange={passwordHandler}
-        />
-        <button id="signup_button" onClick={signupHandler}>
-          SignUp
-        </button>
-      </div>
-    </div>
+    <LeftContainer>
+      <HeadDiv>
+        Welcome,<b> Get Started</b>
+      </HeadDiv>
+      <ImageDiv>
+        <Image src={logo} alt="logo"/>
+      </ImageDiv>
+    </LeftContainer>
+  );
+}
+const Signup = (props: propsType) => {
+  return (
+    <Fragment>
+      <Container>
+        <LeftPage/>
+        <RightContainer>
+          <RightSignup />
+        </RightContainer>
+      </Container>
+    </Fragment>
   );
 };
 
