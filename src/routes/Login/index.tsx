@@ -54,30 +54,15 @@ const HideIcon = styled(FaRegEyeSlash)`
 `;
 const ForgotDiv = styled.div`
   width: 100%;
-  margin-top: 7%;
-`;
-const ForgotP = styled.a`
-  color: #5352ed;
-  text-decoration: none;
-  margin-left: 37%;
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
   font-size: medium;
-  @media screen and (max-width: 600px) {
-    margin-left: 25%;
-  }
-  @media screen and (max-width:655px){
-    font-size:small;
-  }
-  @media screen and (max-width: 760px) {
-    font-size:15px;
-  }
-  @media screen and (max-width: 1160px) {
-    margin-left: 30%;
-  }
-
-  @media screen and (max-width: 960px) {
-    margin-left: 27%;
-  }
 `;
+const ForgotA = styled.a`
+color:#5352ed;
+text-decoration:none;
+`
 const NoPara = styled.p`
   color: #91919f;
   @media screen and (max-width: 400px) {
@@ -127,9 +112,9 @@ const Login = () => {
             <Button>Login</Button>
           </SignupDiv>
           <ForgotDiv>
-            <ForgotP href="/">
-              <b>Forgot password?</b>
-            </ForgotP>
+            <div>
+              <ForgotA href="/forgot">forgot password</ForgotA>
+            </div>
           </ForgotDiv>
           <LoginDiv>
             <NoPara>

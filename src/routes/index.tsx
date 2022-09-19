@@ -2,10 +2,11 @@ import { ReactNode } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {v4 as uuid} from "uuid";
 
-import { ROOT, HOME, LOGIN } from "../utils/routepaths";
+import { ROOT, HOME, LOGIN, USER } from "../utils/routepaths";
 import Login from "./Login/index";
 import Signup from "./Signup/index";
 import Home from "./Home/index";
+import Users from "./Users/index";
 
 const routesConfig = [
   {
@@ -23,6 +24,11 @@ const routesConfig = [
     component: <Home />,
     privateRoute: true,
   },
+  {
+    path: USER,
+    component: <Users />,
+    privateRoute:false,
+  }
 ];
 
 const ProtectedRoute = (component: ReactNode, privateRoute: boolean) => {
